@@ -31,15 +31,16 @@
     <link rel="stylesheet" href="./../CSS/CSS.css">
   </head>
   <body>
-
-
+    <div id="id01" class="modal">
     <?php if(!empty($message)): ?>
       <p> <?= $message ?></p>
     <?php endif; ?>
 
+    
+    <form class="modal-content animate" action="signup.php" method="POST">
     <h1>SignUp</h1>
     <span>or <a href="./../html/login.php">Login</a></span>
-    <form action="signup.php" method="POST">
+    <div class="container">
         <input name="nombre" type="text" placeholder="Enter your name">
         <input name="telefono" type="text" placeholder="Enter your phone">
         <input name="direccion" type="text" placeholder="Enter your dir">
@@ -48,7 +49,8 @@
         <input name="password" type="password" placeholder="Enter your Password">
         <input name="confirm_password" type="password" placeholder="Confirm Password">
         <input type="submit" value="Submit">
+    </div>
     </form>
-
+    </div>
   </body>
 </html>

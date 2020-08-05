@@ -1,42 +1,16 @@
-<?php
-
-  session_start();
-
-  if (isset($_SESSION['user_id'])) {
-    header('Location: ./../php/user.php');
-  }
-  require './../php/database.php';
-
-  if (!empty($_POST['correo']) && !empty($_POST['psw'])) {
-    $valor=$_POST['correo'];
-    $records = $conn->prepare("SELECT * FROM Usuario where correo_cliente='$valor'");
-    $records->bindParam(':correo', $_POST['correo']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
-
-    $message = '';
-
-    if (count($results) > 0 && password_verify($_POST['psw'], $results['clave_cliente'])) {
-      $_SESSION['user_id'] = $results['correo_cliente'];
-      header("Location: ./../../CodigoGaleria/php/user.php");
-    } else {
-      $message = 'disculpe ese usuario no existe';
-    }
-  }
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link type="text/css" rel="stylesheet" href="CodigoGaleria/CSS/CSS.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>LegalID</title>
-    <link type="text/css" rel="stylesheet" href="../CSS/CSS.css">
 </head>
 <body>
-
-
     <div id="id01" class="modal">
 
 
@@ -72,5 +46,6 @@
         </form>
       </div>
 
+      <script type="text/javascript" src="CodigoGaleria/javascript/script.js"></script>
 </body>
 </html>
